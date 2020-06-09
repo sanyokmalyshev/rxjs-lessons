@@ -1,23 +1,25 @@
 import { Observable, fromEvent } from 'rxjs';
 import { debounceTime, map, distinctUntilChanged } from 'rxjs/operators';
 
-// const search$ = new Observable<Event>(observer => {
-//     const search = document.getElementById('search');
+const search$ = new Observable<Event>(observer => {
+    const search = document.getElementById('search');
 
-//     if (!search) {
-//         observer.error('Element not exists on the page');
-//         return
-//     }
+    if (!search) {
+        observer.error('Element not exists on the page');
+        return
+    }
 
-//     search.addEventListener('input', ev => {
-//         observer.next(ev);
+    search.addEventListener('input', ev => {
+        console.log(123);
+        observer.next(ev);
+        observer.complete();
 
-//     });
+    });
 
-// });
+});
 
-const search$: Observable<Event> = fromEvent<Event>(
-    document.getElementById('search'), 'input');
+// const search$: Observable<Event> = fromEvent<Event>(
+//     document.getElementById('search'), 'input');
 
 
 
